@@ -1,5 +1,9 @@
 # README
 
+[![Build Status](https://travis-ci.org/scoulomb/sample-maven-app.svg?branch=main)](https://travis-ci.org/scoulomb/sample-maven-app)
+
+Sample Maven app with full Dockerization.
+
 ## Generate POM file
 
 Following this guide:
@@ -87,3 +91,5 @@ See [compose file](./docker-compose.yaml).
 
 Here we run this compose file in [Travis CI](./.travis.yaml).
 But CI could be a specific docker where we also run the coverage.
+
+<!-- in travis sync when adding new repo -->
