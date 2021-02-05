@@ -10,7 +10,7 @@ COPY src src/
 
 RUN mvn -T1C clean install
 
-RUN mvn clean compile package
+RUN mvn -T1C clean package
 
 RUN ls /working_dir/target
 

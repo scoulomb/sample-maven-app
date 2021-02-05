@@ -71,6 +71,8 @@ But we can run a plugin goal alone
 The default lifecycle has those phases
 https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html#maven-phases
 
+Note a higher phase includes a previous phase.
+
 From pom file comment we can see that
 
 - For jar binding default lifecycle phase and plugin bindings can be found here:
@@ -80,6 +82,8 @@ https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bin
     - site: https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle
 
 It ia possible to change in pom file those plugin bindings.
+
+
 
 ## Run via docker
 
@@ -93,3 +97,16 @@ Here we run this compose file in [Travis CI](./.travis.yaml).
 But CI could be a specific docker where we also run the coverage.
 
 <!-- in travis sync when adding new repo -->
+
+## Some notes
+
+- In docker we use jdk7 but should use more recent version
+- in build section what is really needed is maven-jar-plugin, other line not needed.
+It will take last one (or parent if defined)
+- archetype generates junit 4 but could use 5  
+- we could use exec plugin: https://stackoverflow.com/questions/15869784/how-to-run-a-maven-created-jar-file-using-just-the-command-line
+<!-- but wanted to mimic -->
+- `RUN mvn clean compile package` is not correct because package => test => compile. T1C is also very useful so:
+  `mvn -T1C clean package`, where we have 2 phases of 2 different lifecycle.
+  (lifecylce clean has only the phase clean)
+  
