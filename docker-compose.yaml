@@ -1,0 +1,21 @@
+version: "3.6"
+services:
+  app-build:
+    build: .
+    image: app-build
+  base-service:
+    build:
+      dockerfile: base-service.Dockerfile
+      context: .
+    image: base-service # otherwise no image in local repo
+    # https://stackoverflow.com/questions/37254881/is-there-any-way-to-disable-a-service-in-docker-compose-yml
+    # similar to ./Dockerfile
+    entrypoint: ["echo", "not for run"]
+    depends_on:
+      - app-build
+  service:
+    build:
+      dockerfile: service.Dockerfile
+      context: .
+    depends_on:
+      - base-service
