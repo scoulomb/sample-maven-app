@@ -568,8 +568,20 @@ mvn clean install  -Pcov
 ## plugin version 
 
 Set last version for plugin, see maven central.
-We coud use use renovate!! 
+From https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin
+Last version is `0.8.6`.
+So we can upgrade `0.7.9` to `0.8.6`.
 
+We will it downlaods the new version and use it
+
+````shell
+jacoco-maven-plugin:0.8.6:report
+````
+
+We could use renovate or dependabot!! 
+IDE also enables auto completion of package and version.
+
+<!-- result is core/pull-requests/156/ -->
 
 ## Some notes
 
@@ -582,7 +594,7 @@ or modify `maven-jar-plugin` setup and execute the jar as shown in this doc.
 (lifecycle clean has only 1 phase which has for  default plugin goal binding `clean:clean`: https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#built-in-lifecycle-bindings)
 - when doing `mvn clean:clean` or `mvn clean:help`, we run the clean plugin goal directly.  
 
-<!-- ALL ABOVE IS CLEAR AND OK -->
+<!-- ALL ABOVE IS CLEAR AND OK YES ONLY BELOW TO CHECK -->
 
 ## Links
 
@@ -600,5 +612,7 @@ mvn clean install -DskipTests # skip test run only but compile
 mvn clean install -Dmaven.test.skip=true # skip test run + test compile
 ````
 
-<!-- working correctyl here,
+<!-- working correctly here,
 ccm issue as run test  -DskipTests (SUITE-7816) and thus in deliver build. tracked outside --> 
+
+<!-- make core pr with last version of plugin 0.8.6 (to be aligned with plugin version section) and other components. real work -->
