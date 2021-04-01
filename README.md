@@ -581,7 +581,10 @@ jacoco-maven-plugin:0.8.6:report
 We could use renovate or dependabot!! 
 IDE also enables auto completion of package and version.
 
-<!-- result is core/pull-requests/156/ -->
+<!--
+initial maven for coverage coming from maes
+used here and in core/pull-requests/156/
+ -->
 
 ## Some notes
 
